@@ -33,4 +33,16 @@ const namefield = document.getElementById("Name").innerHTML;
 const courseField = document.getElementById("Course").innerHTML;
 const jobField = document.getElementById("Job").innerHTML;
 
+function nameIterator(names){
+    let nextIndex = 0;
+
+    return {
+         next: function(){
+             return nextIndex < names.length ?
+             { value: names[nextIndex++ ], 
+               done: false
+             } : {done: true}
+         }
+    }
+}
 
