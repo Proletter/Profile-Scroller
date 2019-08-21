@@ -1,47 +1,75 @@
+
+
+//DUmmy data.
 const data = [
     {"name": "Ade",
      "Job": "Policeman",
      "Course": "Mbbs",
     },
-    {"name": "Ade",
-    "Job": "Banker",
+    {"name": "Bayo",
+    "Job": "Boxer",
     "Course": "Maths",
     },
-    {"name": "Ade",
-    "Job": "Banker",
+    {"name": "Taiwo",
+    "Job": "Developer",
     "Course": "English",
     },
-    {"name": "Ade",
-    "Job": "Banker",
+    {"name": "Kemi",
+    "Job": "Trader",
     "Course": "History",
     },
-    {"name": "Ade",
-    "Job": "Banker",
+    {"name": "Bola",
+    "Job": "Driver",
     "Course": "ELect-elect",
     },
-    {"name": "Ade",
-    "Job": "Banker",
+    {"name": "Francis",
+    "Job": "Bus conductor",
     "Course": "Pol Sci",
     },
-    {"name": "Ade",
+    {"name": "Kehinde",
     "Job": "Banker",
     "Course": "Chemistry",
     },
 ];
 
-const namefield = document.getElementById("Name").innerHTML;
-const courseField = document.getElementById("Course").innerHTML;
-const jobField = document.getElementById("Job").innerHTML;
 
-function nameIterator(names){
+document.getElementById('next').addEventListener('click', nextProfile);
+const profiles = profileIterator(data);
+
+
+// next profile display
+function nextProfile(){
+    let currentProfile = profiles.next().value;
+    if(currentProfile !== undefined){
+        console.log(currentProfile);
+        console.log(currentProfile.name);
+        document.getElementById("Name").innerHTML = `<p>${currentProfile.name}</p>`;
+        document.getElementById("Course").innerHTML =`<p>${currentProfile.Job}</p>`;
+        document.getElementById("Job").innerHTML =`<p>${currentProfile.Course}</p>`;
+       
+    }
+    else{
+        window.location.reload();
+    }   
+
+}
+
+
+
+//profile iterator function that I still don't fully understand
+function profileIterator(profiles){
     let nextIndex = 0;
 
     return {
          next: function(){
-             return nextIndex < names.length ?
-             { value: names[nextIndex++ ], 
-               done: false
-             } : {done: true}
+             if(nextIndex < profiles.length){
+                 return {value: profiles[nextIndex++],
+                         done: false
+                        }  
+             }
+             else{
+                 return {done: true}
+             }
          }
     }
 }
