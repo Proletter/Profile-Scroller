@@ -55,8 +55,6 @@ function nextProfile(){
 }
 
 
-
-//profile iterator function that I still don't fully understand
 function profileIterator(profiles){
     let nextIndex = 0;
 
